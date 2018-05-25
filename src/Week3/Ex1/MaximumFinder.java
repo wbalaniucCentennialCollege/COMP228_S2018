@@ -24,6 +24,8 @@ public class MaximumFinder {
 
     // Finds the maximum value between 3 double numbers
     public static double maximum(double x, double y, double z) {
+        return Math.max(x, Math.max(y,z));
+        /*
         double maximumValue = x;
 
         if(y > maximumValue) {
@@ -35,5 +37,6 @@ public class MaximumFinder {
         }
 
         return maximumValue;
+        */
     }
 }
