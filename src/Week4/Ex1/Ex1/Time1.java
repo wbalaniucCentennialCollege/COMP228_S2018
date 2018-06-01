@@ -1,10 +1,10 @@
-package Week4.Ex1;
+package Week4.Ex1.Ex1;
 
 // Define time in a 24-hour format. But accommodate 12 hours as well eventually...
 public class Time1 {
-    private int hour; // Between 0 - 23
-    private int minute; // Between 0 - 59
-    private int second; // Between 0 - 59
+    private int hour = 0; // Between 0 - 23
+    private int minute = 0; // Between 0 - 59
+    private int second = 0; // Between 0 - 59
 
     // Ability to set the time
     public void setTime(int hour, int minute, int second) {
