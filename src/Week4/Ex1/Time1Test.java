@@ -1,4 +1,4 @@
-package Week4.Ex1.Ex1;
+package Week4.Ex1;
 
 public class Time1Test {
     public static void main(String[] args) {

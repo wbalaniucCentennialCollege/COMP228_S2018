@@ -1,4 +1,4 @@
-package Week4.Ex1.Ex3;
+package Week4.Ex2;
 
 // Define time in a 24-hour format. But accommodate 12 hours as well eventually...
 public class Time1 {
@@ -19,12 +19,6 @@ public class Time1 {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
-    }
-
-    public String buildString() {
-        return String.format("%24s: %s%n%24s: %s",
-                "this.toUniversalString()", this.toUniversalString(),
-                "toUniversalString()", toUniversalString());
     }
 
     // Converts into universal time (HH:MM:SS) AKA 24 HOUR CLOCK

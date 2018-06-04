@@ -1,4 +1,4 @@
-package Week4.Ex1.Ex5;
+package Week4.Ex5;
 
 public class Employee {
     private String firstName;

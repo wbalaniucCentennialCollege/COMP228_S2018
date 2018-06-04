@@ -1,4 +1,4 @@
-package Week4.Ex1.Ex4;
+package Week4.Ex4;
 
 
 public class Time1Test {

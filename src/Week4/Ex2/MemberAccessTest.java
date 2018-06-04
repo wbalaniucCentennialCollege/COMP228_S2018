@@ -1,4 +1,4 @@
-package Week4.Ex1.Ex2;
+package Week4.Ex2;
 
 public class MemberAccessTest {
     //Time1 time = new Time1();

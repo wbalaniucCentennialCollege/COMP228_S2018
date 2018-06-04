@@ -1,4 +1,4 @@
-package Week4.Ex1.Ex4;
+package Week4.Ex4;
 
 // Define time in a 24-hour format. But accommodate 12 hours as well eventually...
 public class Time1 {
