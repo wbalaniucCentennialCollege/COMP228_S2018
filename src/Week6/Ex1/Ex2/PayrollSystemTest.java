@@ -33,7 +33,23 @@ public class PayrollSystemTest {
         System.out.println("Employees processed polymorphically");
         for(Employee currentEmployee : employees) {
             System.out.println(currentEmployee);
-            System.out.println();
+
+            if(currentEmployee instanceof BasePlusCommissionEmployee) {
+                // TEMPORARY OBJECT TO CHANGE VALUES
+                // Casting
+                BasePlusCommissionEmployee employee = (BasePlusCommissionEmployee) currentEmployee;
+
+                // Increase base salary by 10%
+                employee.setBaseSalary(1.10 * employee.getBaseSalary());
+
+                System.out.printf("New base salary with 10%% increase is: $%.2f%n", employee.getBaseSalary());
+            }
+
+            System.out.printf("Earned $%.2f%n%n", currentEmployee.earnings());
+        }
+
+        for(int j = 0; j < employees.length; j++) {
+            System.out.printf("Employee %d is a %s%n", j, employees[j].getClass().getName());
         }
     }
 }
