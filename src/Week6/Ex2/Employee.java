@@ -1,4 +1,4 @@
-package Week6.Ex1.Ex2;
+package Week6.Ex2;
 
 public abstract class Employee {
     private final String firstName;

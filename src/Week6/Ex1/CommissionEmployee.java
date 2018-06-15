@@ -1,4 +1,4 @@
-package Week6.Ex1.Ex1;
+package Week6.Ex1;
 
 public class CommissionEmployee extends Object {
     // Variables

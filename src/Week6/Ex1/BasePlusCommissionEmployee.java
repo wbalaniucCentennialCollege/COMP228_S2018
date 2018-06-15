@@ -1,4 +1,4 @@
-package Week6.Ex1.Ex1;
+package Week6.Ex1;
 
 public class BasePlusCommissionEmployee extends CommissionEmployee {
     private double baseSalary;

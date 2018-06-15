@@ -61,7 +61,7 @@ public class Invoice implements Payable {
     @Override
     public String toString() {
         return String.format("%s: %n%s: %s (%s) %n%s: %d %n%s: $%.2f", "Invoice",
-                "Part Number:", getPartNumber(), getPartDescription(),
+                "Part Number", getPartNumber(), getPartDescription(),
                 "Quantity", getQuantity(),
                 "Price per Item", getPricePerItem());
     }
