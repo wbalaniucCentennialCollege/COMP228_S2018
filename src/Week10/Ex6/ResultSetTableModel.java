@@ -23,22 +23,122 @@ public class ResultSetTableModel extends AbstractTableModel {
         connectedToDatabase = true;
 
         // Run a query
-        // setQuery(query);
+        setQuery(query);
+    }
+
+    public Class getColumnClass(int column) throws IllegalStateException {
+        if(!connectedToDatabase) {
+            throw new IllegalStateException("Not Connected to Database");
+        }
+
+        try {
+            String className = metaData.getColumnClassName(column + 1);
+
+            return Class.forName(className);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return Object.class;
+    }
+
+    @Override
+    public int getColumnCount() throws IllegalStateException {
+        if(!connectedToDatabase) {
+            throw new IllegalStateException("Not connected to database");
+        }
+
+        try {
+            return metaData.getColumnCount(); // Return column count to caller
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0; // Return nothing if there is nothing
+    }
+
+    public String getColumnName(int column) throws IllegalStateException {
+        if(!connectedToDatabase) {
+            throw new IllegalStateException("Not connected to the database");
+        }
+
+        try {
+            return metaData.getColumnName(column + 1); // Return name of the column
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ""; // Return empty string if problem occurs
     }
 
 
     @Override
-    public int getRowCount() {
-        return 0;
+    public int getRowCount() throws IllegalStateException{
+        if(!connectedToDatabase) {
+            throw new IllegalStateException("Not connected to Database");
+        }
+        return numberOfRows;
     }
 
     @Override
-    public int getColumnCount() {
-        return 0;
+    public Object getValueAt(int rowIndex, int columnIndex) throws IllegalStateException {
+        if(!connectedToDatabase) {
+            throw new IllegalStateException("Not connected to Database");
+        }
+
+        try {
+            resultSet.absolute(rowIndex + 1);
+            return resultSet.getObject(columnIndex + 1);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
-    @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        return null;
+    public void setQuery(String query) throws SQLException, IllegalStateException {
+        if(!connectedToDatabase) {
+            throw new IllegalStateException("Not Connected to Database");
+        }
+
+        resultSet = stmt.executeQuery(query);
+        metaData = resultSet.getMetaData();
+
+        // Determine number of rows
+        resultSet.last(); // Points to the last row of my resultSet
+        numberOfRows = resultSet.getRow();
+
+        // UPDATE OUR GUI
+        fireTableStructureChanged(); // Signals to GUI components that resultSet has changed and that GUI will change
+    }
+
+    public void disconnectFromDatabase() {
+        if(connectedToDatabase) {
+            try {
+                resultSet.close();
+                stmt.close();
+                con.close();
+            }
+            catch(SQLException e) {
+                e.printStackTrace();
+            }
+            finally {
+                connectedToDatabase = false;
+            }
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
