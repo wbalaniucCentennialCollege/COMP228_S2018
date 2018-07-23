@@ -10,6 +10,24 @@ import java.sql.SQLException;
 import java.util.regex.PatternSyntaxException;
 import javax.swing.*;
 
-public class DisplayQueryResults {
+public class DisplayQueryResults extends JFrame {
+    public static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    public static final String DATABASE_URL = "jdbc:sqlserver://localhost:1433;database=Games;integratedSecurity";
 
+    public static final String DEFAULT_QUERY = "SELECT * FROM Games";
+
+    // public static final ResultSetTableModel tableModel;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
