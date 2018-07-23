@@ -4,8 +4,7 @@ import java.sql.*;
 
 public class connectURL {
     public static void main(String[] args) {
-        String connectionURL = "jdbc:sqlserver://localhost:1433;database=Product;" +
-                "integratedSecurity=true"; // Using windows authentication
+        String connectionURL = "jdbc:sqlserver://localhost:1433;database=Games;integratedSecurity=true"; // Using windows authentication
 
         Connection con = null;
         Statement stmt = null;
@@ -17,12 +16,12 @@ public class connectURL {
             con = DriverManager.getConnection(connectionURL);
 
             // Create and execute an SQL statement that returns some data
-            String SQL = "SELECT * FROM Product";
+            String SQL = "SELECT * FROM Game";
             stmt = con.createStatement();
             rs = stmt.executeQuery(SQL);
 
             while(rs.next()) {
-                System.out.println(rs.getString("prod_name") + " " + rs.getString("prod_desc"));
+                System.out.println(rs.getString("game_name") + " " + rs.getString("game_desc") + " $" + rs.getDouble("game_price"));
             }
         }
         catch(Exception e) {
